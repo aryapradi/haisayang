@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>17 Tahun Araa</title>
+  <!-- <link rel="stylesheet" href="/style.css"> -->
+<style>
+
+  
+    * {margin:0;padding:0;box-sizing:border-box}
+
+    body{
+      font-family:'Segoe UI',sans-serif;
+      background:linear-gradient(135deg,#ffe4ec,#fff);
+      color:#333;
+      scroll-behavior:smooth;
+      overflow-x:hidden;
+    }
+
+    /* ===== SCROLL ANIMATION ===== */
+    .fade{opacity:0;transform:translateY(40px);transition:1s ease}
+    .fade.show{opacity:1;transform:none}
+
+    /* ===== HERO ===== */
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+    }
+    .hero h1{
+      font-family:'Dancing Script',cursive;
+      font-size:3.6rem;
+      color:#ff4d6d;
+    }
+    .hero p{max-width:520px;line-height:1.8}
+    .anniv-counter{margin-top:15px;color:#666}
+
+    /* ===== GALLERY ===== */
+    .gallery{padding:80px 20px}
+    .gallery h2{
+      font-family:'Dancing Script',cursive;
+      text-align:center;
+      color:#ff4d6d;
+      font-size:2.5rem;
+      margin-bottom:50px;
+    }
+    .cards{
+      max-width:1000px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+    .card{
+      background:#fff;
+      border-radius:22px;
+      box-shadow:0 12px 30px rgba(0,0,0,.12);
+      overflow:hidden;
+      transition:.4s;
+    }
+    .card:hover{transform:translateY(-10px)}
+    .card img{width:100%;height:260px;object-fit:cover}
+    .card p{text-align:center;padding:15px;color:#555}
+
+    /* ===== TIMELINE ===== */
+    .timeline-section{padding:90px 20px;text-align:center}
+    .timeline-section h2{
+      font-family:'Dancing Script',cursive;
+      color:#ff4d6d;
+      font-size:2.6rem;
+      margin-bottom:60px;
+    }
+    .timeline{max-width:700px;margin:auto;position:relative}
+    .timeline::before{
+      content:'';
+      position:absolute;
+      left:50%;
+      top:0;
+      width:3px;
+      height:100%;
+      background:#ffd1dc;
+      transform:translateX(-50%);
+    }
+    .timeline-item{
+      background:#fff;
+      padding:25px;
+      border-radius:22px;
+      box-shadow:0 12px 30px rgba(0,0,0,.12);
+      margin-bottom:60px;
+      width:90%;
+      margin-inline:auto;
+      position:relative;
+    }
+    .timeline-item img{
+      width:150px;
+      height:150px;
+      border-radius:50%;
+      object-fit:cover;
+      margin:0 auto 15px;
+      display:block;
+      border:5px solid #ffd1dc;
+    }
+    .year{
+      position:absolute;
+      top:-15px;
+      left:50%;
+      transform:translateX(-50%);
+      background:#ff4d6d;
+      color:#fff;
+      padding:6px 14px;
+      border-radius:20px;
+      font-size:.85rem;
+    }
+    .timeline-item p{
+      font-family:'Dancing Script',cursive;
+      font-size:1.2rem;
+      line-height:1.8;
+    }
+
+    /* ===== LETTER ===== */
+    .letter-section{padding:90px 20px;text-align:center}
+    .letter-section h2{
+      font-family:'Dancing Script',cursive;
+      color:#ff4d6d;
+      font-size:2.6rem;
+      margin-bottom:35px;
+    }
+    .message-card{
+      background:#fff;
+      max-width:620px;
+      margin:auto;
+      padding:40px;
+      border-radius:26px;
+      box-shadow:0 18px 40px rgba(0,0,0,.15);
+    }
+    .message-card p{
+      font-family:'Dancing Script',cursive;
+      font-size:1.3rem;
+      line-height:2;
+    }
+
+    /* ===== MUSIC ===== */
+    .music-btn{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      background:#ff4d6d;
+      color:#fff;
+      border:none;
+      padding:12px 16px;
+      border-radius:50px;
+      cursor:pointer;
+      box-shadow:0 8px 20px rgba(0,0,0,.2);
+      z-index:1000;
+    }
+
+    /* ===== MAP SECTION ===== */
+.map-section{
+  padding:90px 20px;
+  text-align:center;
+}
+.map-section h2{
+  font-family:'Dancing Script',cursive;
+  color:#ff4d6d;
+  font-size:2.6rem;
+  margin-bottom:50px;
+}
+.map-cards{
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+.map-card{
+  background:#fff;
+  border-radius:24px;
+  box-shadow:0 14px 35px rgba(0,0,0,.15);
+  overflow:hidden;
+}
+.map-card h3{
+  padding:15px;
+  font-family:'Dancing Script',cursive;
+  font-size:1.5rem;
+  color:#ff4d6d;
+}
+.map-card iframe{
+  width:100%;
+  height:300px;
+  border:none;
+}
+
+
+/* ===== SURAT FANCY ===== */
+.fancy-letter{
+  background:linear-gradient(135deg,#fff5f8,#ffffff);
+  border:2px solid #ffd1dc;
+  position:relative;
+  overflow:hidden;
+}
+
+.fancy-letter::before{
+  content:"";
+  position:absolute;
+  top:-40px;
+  right:-40px;
+  width:140px;
+  height:140px;
+  background:radial-gradient(circle,#ffd1dc,transparent 70%);
+  opacity:.6;
+}
+
+.fancy-letter::after{
+  content:"";
+  position:absolute;
+  bottom:-40px;
+  left:-40px;
+  width:140px;
+  height:140px;
+  background:radial-gradient(circle,#ffe4ec,transparent 70%);
+  opacity:.6;
+}
+
+.letter-header{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:25px;
+}
+
+.letter-header h3{
+  font-family:'Dancing Script',cursive;
+  font-size:2rem;
+  color:#ff4d6d;
+}
+
+.letter-header span{
+  font-size:1.8rem;
+}
+
+/* ===== TANDA TANGAN ===== */
+.signature{
+  display:block;
+  margin-top:30px;
+  text-align:right;
+  font-family:'Dancing Script',cursive;
+  color:#ff4d6d;
+  opacity:0;
+  animation:signFade 1.5s ease forwards;
+  animation-delay:1.2s;
+}
+
+.sign-name{
+  font-size:1.7rem;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+@keyframes signFade{
+  to{opacity:1}
+}
+
+
+
+    /* ===== HEART PARTICLE ===== */
+    .heart{
+      position:fixed;
+      top:-10px;
+      color:#ff4d6d;
+      font-size:20px;
+      animation:fall linear forwards;
+      pointer-events:none;
+    }
+    @keyframes fall{
+      to{transform:translateY(110vh);opacity:0}
+    }
+
+    .footer{text-align:center;padding:40px;color:#777}
+  
+</style>
+  <!-- Handwritten Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+
+  
+</head>
+
+<body>
+
+<audio id="bg-music" loop>
+  <source src="/assets/lagu 1.mp3" type="audio/mpeg">
+</audio>
+<button class="music-btn" onclick="toggleMusic()">Play</button>
+
+<section class="hero fade">
+  <h1>Selamat Ulang Tahun ke-17, Araa</h1>
+  <p>Hari ini kamu bertambah usia, dan aku bersyukur masih bisa ada di sisimu.</p>
+  <div class="anniv-counter" id="anniv-counter"></div>
+</section>
+
+<section class="gallery fade">
+  <h2>Kenangan Kita</h2>
+  <div class="cards">
+    <!-- <div class="card"><img src="/assets/ara.jpeg"><p>Senyum favoritku</p></div>
+    <div class="card"><img src="/assets/araa.jpeg"><p>Kamu selalu cukup</p></div> -->
+    <div class="card"><img src="/assets/araaa.jpeg"><p>Momen kecil berarti</p></div>
+    <div class="card"><img src="/assets/araaa.jpeg"><p>Momen kecil berarti</p></div>
+    <div class="card"><img src="/assets/araaa.jpeg"><p>Momen kecil berarti</p></div>
+  </div>
+</section>
+
+<section class="timeline-section fade">
+  <h2>Perjalanan Araa</h2>
+  <div class="timeline">
+    <div class="timeline-item fade">
+      <span class="year">Kecil</span>
+      <img src="/assets/lucuu.jpeg">
+      <p>Kamu sudah manis sejak awal.</p>
+    </div>
+    <div class="timeline-item fade">
+      <span class="year">Remaja</span>
+      <img src="/assets/remaja.jpg">
+      <p>Kamu tumbuh jadi versi kuatmu.</p>
+    </div>
+    <div class="timeline-item fade">
+      <span class="year">17 Tahun</span>
+      <img src="/assets/araaa.jpeg">
+      <p>Dan hari ini, kamu luar biasa.</p>
+    </div>
+  </div>
+</section>
+
+<section class="letter-section fade">
+  <h2>Pesan Rahasia</h2>
+
+  <p style="margin-bottom:20px;color:#666">
+    Masukkan tanggal lahirmu untuk membuka
+  </p>
+
+  <input
+    type="date"
+    id="birthInput"
+    style="
+      padding:10px 14px;
+      border-radius:14px;
+      border:1px solid #ddd;
+      font-size:1rem;
+    "
+  >
+
+  <button
+    onclick="unlockMessage()"
+    style="
+      margin-left:10px;
+      padding:10px 18px;
+      border:none;
+      border-radius:14px;
+      background:#ff4d6d;
+      color:white;
+      cursor:pointer;
+    "
+  >
+    Buka
+  </button>
+
+  <p id="wrongMsg"
+     style="margin-top:15px;color:#ff4d6d;display:none">
+    Tanggalnya salah, coba ingat lagi ya.
+  </p>
+
+  <div
+  id="secretMessage"
+  class="message-card fancy-letter fade"
+  style="display:none;margin-top:40px"
+>
+  <div class="letter-header">
+    <span>💌</span>
+    <h3>Untuk Araa</h3>
+  </div>
+
+  <p>
+    Selamat ulang tahun ke-17, Araa.<br><br>
+
+    Terima kasih sudah bertahan sejauh ini,
+    sudah tumbuh dengan caramu sendiri,
+    dan tetap jadi kamu yang hangat.<br><br>
+
+    Mungkin tidak semua hari mudah,
+    tapi kamu selalu berhasil melewatinya.
+    Dan itu saja sudah lebih dari cukup.<br><br>
+
+    Aku bangga sama kamu.
+    Hari ini, besok, dan seterusnya.<br><br>
+
+    <span class="signature">
+  — dengan tulus,<br>
+  <span class="sign-name">Arya</span>
+</span>
+
+  </p>
+</div>
+
+</section>
+
+
+<section class="map-section fade">
+  <h2>Jarak Kita</h2>
+
+  <div class="map-cards">
+    <div class="map-card">
+      <h3>Rumah Arya</h3>
+      <iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31652.3632341256!2d106.84454376649189!3d-6.379793499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e420fa2c93f4fbd%3A0x0!2zNsKwMjInNDUuNSJTIDEwNsKwNTEnNDQuOCJF!5e0!3m2!1sid!2sid!4v1700000000000"
+  allowfullscreen
+  loading="lazy">
+</iframe>
+
+    </div>
+
+    <div class="map-card">
+      <h3>Rumah Araa</h3>
+      <iframe
+  src="https://www.google.com/maps?q=-6.3760328,106.8533315&z=16&output=embed"
+  style="border:0; width:100%; height:300px;"
+  allowfullscreen=""
+  loading="lazy">
+</iframe>
+
+
+    </div>
+  </div>
+</section>
+
+
+
+<div class="footer fade">
+  Dibuat dengan tulus, hanya untuk Araa
+</div>
+
+<script>
+  /* scroll */
+  const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('show')));
+  document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+
+  /* music */
+  const music=document.getElementById('bg-music');
+  let play=false;
+  function toggleMusic(){play?music.pause():music.play();play=!play}
+
+  /* anniversary counter */
+  const start=new Date("2026-01-06"); // ganti tanggal jadian
+  const today=new Date();
+  const days=Math.floor((today-start)/(1000*60*60*24));
+  document.getElementById("anniv-counter").innerHTML=
+    `Sudah <b>${days}</b> hari kita bersama`;
+
+  /* hearts */
+  setInterval(()=>{
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="♥";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=(3+Math.random()*3)+"s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+  },400);
+
+
+  function unlockMessage(){
+  const input=document.getElementById("birthInput").value;
+
+  const correctDate="2009-02-11"; 
+  // GANTI dengan tanggal lahir Araa (format: YYYY-MM-DD)
+
+  if(input===correctDate){
+    const msg=document.getElementById("secretMessage");
+    msg.style.display="block";
+    setTimeout(()=>msg.classList.add("show"),50);
+
+    document.getElementById("wrongMsg").style.display="none";
+
+    if(navigator.vibrate) navigator.vibrate(60);
+  }else{
+    document.getElementById("wrongMsg").style.display="block";
+  }
+}
+
+</script>
+
+</body>
+</html>
