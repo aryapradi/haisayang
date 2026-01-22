@@ -280,6 +280,243 @@
       to{transform:translateY(110vh);opacity:0}
     }
 
+
+    /* CUT SCENE */
+.cut-scene{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  background:linear-gradient(135deg,#ff4d6d,#ff8fa3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  z-index:9999;
+  opacity:0;
+  pointer-events:none;
+  transition:1s ease;
+}
+
+.cut-scene.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.cut-content{
+  color:white;
+  transform:scale(.8);
+  opacity:0;
+  transition:1s ease;
+}
+
+.cut-scene.show .cut-content{
+  transform:scale(1);
+  opacity:1;
+}
+
+.cut-content h1{
+  font-family:'Dancing Script',cursive;
+  font-size:3rem;
+  margin-bottom:20px;
+}
+
+.cut-content p{
+  font-size:1.2rem;
+}
+
+
+
+
+.cake-section{
+  padding:90px 20px;
+  text-align:center;
+}
+
+/* ===== CAKE REALISTIC ===== */
+
+.cake{
+  position:relative;
+  width:220px;
+  height:200px;
+  margin:40px auto;
+}
+
+.plate{
+  position:absolute;
+  bottom:0;
+  width:240px;
+  height:20px;
+  background:#eee;
+  border-radius:50%;
+  left:50%;
+  transform:translateX(-50%);
+  box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.cake-body{
+  position:absolute;
+  bottom:20px;
+  width:200px;
+  height:120px;
+  background:linear-gradient(180deg,#ff4d6d,#c9184a);
+  border-radius:20px 20px 10px 10px;
+  left:50%;
+  transform:translateX(-50%);
+  box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+
+
+
+
+.icing{
+  position:absolute;
+  top:-15px;
+  width:200px;
+  height:40px;
+  background:#fff;
+  border-radius:50%;
+}
+
+.candle{
+  position:absolute;
+  top:-60px;
+  left:50%;
+  transform:translateX(-50%);
+  width:14px;
+  height:50px;
+  background:#fff;
+  border-radius:6px;
+}
+
+.flame{
+  position:absolute;
+  top:-25px;
+  left:50%;
+  transform:translateX(-50%);
+  width:18px;
+  height:25px;
+  background:radial-gradient(circle at 50% 30%, #fff, #ffcc00 40%, #ff6600 70%);
+  border-radius:50%;
+  animation:flicker .15s infinite alternate;
+  box-shadow:0 0 15px rgba(255,200,0,.8);
+}
+
+@keyframes flicker{
+  from{transform:translateX(-50%) scale(1);}
+  to{transform:translateX(-50%) scale(1.15);}
+}
+
+
+.flame{
+  position:absolute;
+  top:-20px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:30px;
+  animation:flicker .2s infinite alternate;
+}
+
+
+
+/* ===== NUMBER 17 ===== */
+.number{
+  position:absolute;
+  top:-45px;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:'Dancing Script',cursive;
+  font-size:40px;
+  color:black;
+  text-shadow:0 4px 10px rgba(0,0,0,.3);
+  z-index:5;
+}
+
+/* ===== DRIPPING CREAM ===== */
+.drip{
+  position:absolute;
+  top:20px;
+  width:20px;
+  height:40px;
+  background:white;
+  border-radius:10px;
+  animation:dripMove 3s infinite ease-in-out;
+}
+
+.drip1{left:30px; animation-delay:0s;}
+.drip2{left:90px; animation-delay:1s;}
+.drip3{left:150px; animation-delay:2s;}
+
+@keyframes dripMove{
+  0%{height:20px;}
+  50%{height:45px;}
+  100%{height:20px;}
+}
+
+/* ===== CAKE SHAKE SOFT ===== */
+.cake-body{
+  animation:cakeShake 3s infinite ease-in-out;
+}
+
+@keyframes cakeShake{
+  0%{transform:translateX(-50%) rotate(0deg);}
+  50%{transform:translateX(-50%) rotate(1.5deg);}
+  100%{transform:translateX(-50%) rotate(0deg);}
+}
+
+
+/* ===== FLASH EFFECT ===== */
+.flash{
+  position:fixed;
+  inset:0;
+  background:white;
+  opacity:0;
+  pointer-events:none;
+  z-index:9998;
+}
+
+.flash.show{
+  animation:flashAnim .6s ease;
+}
+
+@keyframes flashAnim{
+  0%{opacity:0}
+  40%{opacity:.9}
+  100%{opacity:0}
+}
+
+/* ===== CONFETTI ===== */
+.confetti{
+  position:fixed;
+  top:-10px;
+  width:8px;
+  height:14px;
+  background:red;
+  opacity:.8;
+  z-index:9999;
+  animation:confettiFall linear forwards;
+}
+
+@keyframes confettiFall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+    opacity:0;
+  }
+}
+
+
+
+
+
+
+@keyframes flicker{
+  from{transform:translateX(-50%) scale(1)}
+  to{transform:translateX(-50%) scale(1.1)}
+}
+
+
     .footer{text-align:center;padding:40px;color:#777}
   
 </style>
@@ -408,6 +645,7 @@
 </section>
 
 
+
 <section class="map-section fade">
   <h2>Jarak Kita</h2>
 
@@ -436,13 +674,151 @@
   </div>
 </section>
 
+<section class="cake-section fade">
+  <h2 style="font-family:'Dancing Script',cursive;color:#ff4d6d;font-size:2.5rem; margin-bottom: 100px;">
+    Make a Wish 🎂
+  </h2>
+
+  <!-- CUT SCENE -->
+<div id="cutScene" class="cut-scene">
+  <div class="cut-content">
+    <h1>Selamat 17 Tahun, Sayanggg 🤍</h1>
+    <p>Kamu resmi jadi versi paling indah dari dirimu sendiri.</p>
+  </div>
+</div>
+
+
+  <div class="cake">
+  <div class="plate"></div>
+
+  <div class="cake-body">
+    <div class="icing"></div>
+
+    <!-- Angka 17 -->
+    <div class="number">17</div>
+
+    <!-- Krim Netes -->
+    <div class="drip drip1"></div>
+    <div class="drip drip2"></div>
+    <div class="drip drip3"></div>
+
+    <div class="candle">
+      <div class="flame" id="flame"></div>
+    </div>
+  </div>
+</div>
+
+
+
+  <p style="margin-top:20px;color:#666">
+    Tiup lilinnya yaa 💨
+  </p>
+</section>
+
+
 
 
 <div class="footer fade">
   Dibuat dengan tulus, hanya untuk Araa
 </div>
 
+
+
+
 <script>
+
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const docHeight = document.body.offsetHeight;
+
+  // cek apakah sudah sampai bawah
+  if (scrollTop + windowHeight >= docHeight - 10) {
+    fadeOutMusic();
+  }
+});
+
+function fadeOutMusic(){
+  const fadeInterval = setInterval(() => {
+    if (music.volume > 0.05) {
+      music.volume -= 0.05; // makin kecil pelan-pelan
+    } else {
+      music.volume = 1;
+      music.pause();
+      clearInterval(fadeInterval);
+    }
+  }, 200); // semakin kecil angka, semakin cepat fade
+}
+
+
+
+
+  /* BLOW CANDLE */
+async function enableMic(){
+  try{
+    const stream = await navigator.mediaDevices.getUserMedia({audio:true});
+    const audioContext = new AudioContext();
+    const mic = audioContext.createMediaStreamSource(stream);
+    const analyser = audioContext.createAnalyser();
+    mic.connect(analyser);
+
+    const data = new Uint8Array(analyser.frequencyBinCount);
+
+    function detectBlow(){
+      analyser.getByteFrequencyData(data);
+      let volume = data.reduce((a,b)=>a+b)/data.length;
+
+      if(volume > 60){
+
+  document.getElementById("flame").style.display="none";
+
+  // FLASH
+  const flash=document.getElementById("flash");
+  flash.classList.add("show");
+
+  // CONFETTI
+  for(let i=0;i<120;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=`hsl(${Math.random()*360},100%,60%)`;
+    c.style.animationDuration=(2+Math.random()*3)+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),5000);
+  }
+
+  const cutScene=document.getElementById("cutScene");
+  cutScene.classList.add("show");
+
+  // reset flash class
+  setTimeout(()=>flash.classList.remove("show"),600);
+
+  // kembali normal setelah 4 detik
+  setTimeout(()=>{
+    cutScene.classList.remove("show");
+
+    setTimeout(()=>{
+      document.getElementById("flame").style.display="block";
+    },800);
+
+  },4000);
+}
+
+
+
+      requestAnimationFrame(detectBlow);
+    }
+
+    detectBlow();
+  }catch(e){
+    console.log("Mic tidak diizinkan");
+  }
+}
+
+enableMic();
+
+
+
   /* scroll */
   const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('show')));
   document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
@@ -491,6 +867,9 @@
 }
 
 </script>
+
+<div id="flash" class="flash"></div>
+
 
 </body>
 </html>
